@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="426" viewBox="0 0 800 426" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#60646c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="798" height="424" rx="12" fill="#ffffff" stroke="#e0e1e6"/>
+
+  <!-- Spaltentitel -->
+  <g font-size="14" font-weight="600" fill="#60646c">
+    <text x="30" y="45">Anfragen</text>
+    <text x="230" y="45">Warteschlangen, nach Priorität</text>
+    <text x="610" y="45">GPU mit 4 Slots</text>
+  </g>
+
+  <!-- Anfragen -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#1c2024" text-anchor="middle">
+    <rect x="30" y="77" width="160" height="36" rx="18" fill="#feebec" stroke="#e5484d"/>
+    <text x="110" y="99">llama-70b:nitro</text>
+    <rect x="30" y="147" width="160" height="36" rx="18" fill="#edf2fe" stroke="#3e63dd"/>
+    <text x="110" y="169">llama-70b</text>
+    <rect x="30" y="217" width="160" height="36" rx="18" fill="#e6f6eb" stroke="#30a46c"/>
+    <text x="110" y="239">llama-70b:flex</text>
+  </g>
+  <g stroke="#60646c" stroke-width="1.5" marker-end="url(#pfeil)">
+    <line x1="192" y1="95" x2="226" y2="95"/>
+    <line x1="192" y1="165" x2="226" y2="165"/>
+    <line x1="192" y1="235" x2="226" y2="235"/>
+  </g>
+
+  <!-- Lanes -->
+  <rect x="230" y="73" width="260" height="44" rx="8" fill="#feebec" stroke="#e5484d"/>
+  <rect x="230" y="143" width="260" height="44" rx="8" fill="#edf2fe" stroke="#3e63dd"/>
+  <rect x="230" y="213" width="260" height="44" rx="8" fill="#e6f6eb" stroke="#30a46c"/>
+  <g font-size="13" font-weight="600" fill="#1c2024">
+    <text x="244" y="92">nitro</text>
+    <text x="244" y="162">normal</text>
+    <text x="244" y="232">flex</text>
+  </g>
+  <g font-size="12" fill="#60646c">
+    <text x="244" y="108">max 4, Preis 2×</text>
+    <text x="244" y="178">max 3, Preis 1×</text>
+    <text x="244" y="248">max 1, Preis 0,3×</text>
+  </g>
+  <!-- wartende Anfragen -->
+  <rect x="460" y="86" width="18" height="18" rx="3" fill="#e5484d"/>
+  <g fill="#3e63dd">
+    <rect x="460" y="156" width="18" height="18" rx="3"/>
+    <rect x="438" y="156" width="18" height="18" rx="3"/>
+    <rect x="416" y="156" width="18" height="18" rx="3"/>
+  </g>
+  <g fill="#30a46c">
+    <rect x="460" y="226" width="18" height="18" rx="3"/>
+    <rect x="438" y="226" width="18" height="18" rx="3"/>
+  </g>
+
+  <!-- next() -->
+  <g stroke="#60646c" stroke-width="1.5" fill="none">
+    <path d="M490 95 C505 95, 505 160, 514 163" marker-end="url(#pfeil)"/>
+    <line x1="490" y1="165" x2="512" y2="165" marker-end="url(#pfeil)"/>
+    <path d="M490 235 C505 235, 505 170, 514 167" marker-end="url(#pfeil)" stroke-dasharray="4 3"/>
+    <line x1="586" y1="165" x2="606" y2="165" marker-end="url(#pfeil)"/>
+  </g>
+  <rect x="516" y="150" width="70" height="30" rx="6" fill="#1c2024"/>
+  <text x="551" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#ffffff" text-anchor="middle">next()</text>
+
+  <!-- GPU -->
+  <rect x="610" y="66" width="160" height="196" rx="10" fill="#f9f9fb" stroke="#1c2024" stroke-width="1.5"/>
+  <rect x="625" y="80" width="130" height="36" rx="6" fill="#3e63dd"/>
+  <rect x="625" y="124" width="130" height="36" rx="6" fill="#3e63dd"/>
+  <rect x="625" y="168" width="130" height="36" rx="6" fill="#3e63dd"/>
+  <rect x="625" y="212" width="130" height="36" rx="6" fill="#e5484d"/>
+  <g font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">
+    <text x="690" y="103">normal</text>
+    <text x="690" y="147">normal</text>
+    <text x="690" y="191">normal</text>
+    <text x="690" y="235">nitro</text>
+  </g>
+
+  <!-- Regeln -->
+  <line x1="30" y1="285" x2="770" y2="285" stroke="#e0e1e6"/>
+  <g font-size="13" fill="#1c2024">
+    <text x="30" y="310"><tspan font-weight="600">next()</tspan> läuft bei jeder neuen und jeder fertigen Anfrage:</text>
+    <text x="46" y="332">1. Lanes nach Priorität durchgehen</text>
+    <text x="46" y="352">2. Freie Slots füllen, bis die Lane ihr max erreicht</text>
+    <text x="46" y="372">3. Wartet oben noch eine Anfrage, bekommt unten niemand einen Slot</text>
+    <text x="30" y="404" fill="#60646c"><tspan font-weight="600" fill="#1c2024">Abrechnung:</tspan> Tokens × Preis pro Person, danach anteilig an der Monatsrechnung</text>
+  </g>
+</svg>
